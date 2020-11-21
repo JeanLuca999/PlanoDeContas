@@ -1,11 +1,26 @@
 import dadosTabela from './dadosDaTabela.js'
 
 const $tabela = document.getElementById('tabela')
-const $configuracoes = document.getElementById('configuracoes')
 const $modoNoturno = document.getElementById('botao-noturno')
-
+const $filtrarTabela = document.getElementById('filtrar-tabela')
 
 window.addEventListener('load', criarTabela())
+
+$filtrarTabela.addEventListener('click', () => {
+    const opcao = document.getElementById('configuracoes').value
+    switch(opcao) {
+        case 'sintetica':
+            criarTabelaContasSinteticas()
+            break
+        case 'analitica':
+            criarTabelaContasAnaliticas()
+            break
+        case 'nenhum':
+            retirarFiltros()
+            break
+    }
+
+})
 
 $modoNoturno.addEventListener('click', ()=>{
     document.querySelector('body').classList.toggle('noturno-body')
@@ -17,10 +32,10 @@ $modoNoturno.addEventListener('click', ()=>{
 })
 
 function criarTabela(){
-    let cabecalho = document.createElement('tr')
-    let tituloClassificacao = document.createElement('th')
-    let tituloNomenclatura = document.createElement('th')
-    let tituloGrau = document.createElement('th')
+    const cabecalho = document.createElement('tr')
+    const tituloClassificacao = document.createElement('th')
+    const tituloNomenclatura = document.createElement('th')
+    const tituloGrau = document.createElement('th')
 
     tituloClassificacao.innerHTML = 'Classificação'
     tituloNomenclatura.innerHTML = 'Nomenclatura'
@@ -44,6 +59,8 @@ function criarTabela(){
 
         if(grau.innerHTML == 1 || grau.innerHTML == 2 || grau.innerHTML == 3) {
             novaLinha.setAttribute('class', 'sintetica')
+        } else {
+            novaLinha.setAttribute('class', 'analitica')
         }
 
         novaLinha.appendChild(classificacao)
@@ -51,4 +68,19 @@ function criarTabela(){
         novaLinha.appendChild(grau)
         $tabela.appendChild(novaLinha)
     }
+}
+
+function criarTabelaContasSinteticas(){
+    document.querySelectorAll('.sintetica').forEach(item => item.style = '')
+    document.querySelectorAll('.analitica').forEach(item => item.style.display = 'none')
+}
+
+function criarTabelaContasAnaliticas() {
+    document.querySelectorAll('.analitica').forEach(item => item.style = '')
+    document.querySelectorAll('.sintetica').forEach(item => item.style.display = 'none')
+}
+
+function retirarFiltros() {
+    document.querySelectorAll('.sintetica').forEach(item => item.style = '')
+    document.querySelectorAll('.analitica').forEach(item => item.style = '')
 }

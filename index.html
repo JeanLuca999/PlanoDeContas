@@ -13,10 +13,11 @@
             <div id="container-configuracoes">
                 <button id="botao-noturno">modo noturno</button>
                 <select id="configuracoes">
-                    <option value="">Escolha uma Opção</option>
-                    <option value="sintetica">Filtrar Contas Sintéticas</option>
-                    <option value="analitica">Filtrar Contas Analíticas</option>
+                    <option value="nenhum">Sem Filtro</option>
+                    <option value="sintetica" id="filtrar-sintetica">Filtrar Contas Sintéticas</option>
+                    <option value="analitica" id="filtrar-analitica">Filtrar Contas Analíticas</option>
                 </select>
+                <button id="filtrar-tabela">Filtrar Tabela</button>
             </div>
             <table id="tabela"></table>
         </section>
