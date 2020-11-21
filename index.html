@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +11,16 @@
         <h1>Plano De Contas - Construtora</h1>
         <section id="container-tabela">
             <div id="container-configuracoes">
+                <button id="botao-noturno">modo noturno</button>
                 <select id="configuracoes">
                     <option value="">Escolha uma Opção</option>
+                    <option value="sintetica">Filtrar Contas Sintéticas</option>
+                    <option value="analitica">Filtrar Contas Analíticas</option>
                 </select>
             </div>
             <table id="tabela"></table>
         </section>
     </main>
-    <script src="js/script.js"></script>
+    <script src="./js/script.js" type="module"></script>
 </body>
 </html>
